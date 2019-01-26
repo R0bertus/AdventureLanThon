@@ -1,9 +1,9 @@
-function loop(code, interval=0.25) {
+function _loop(code, interval=0.25) {
     var load_script = function (d, s, id, code, src) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (src == null) {
             var request = new XMLHttpRequest();
-            request.open("GET", "//github.com/R0bertus/AdventureLanThon/alt/core.py", false);
+            request.open("GET", "//raw.githubusercontent.com/R0bertus/AdventureLanThon/master/alt/core.py", false);
             request.onreadystatechange = function () {
                 if(request.readyState === 4) {
                     if(request.status === 200 || request.status == 0) {
@@ -21,7 +21,7 @@ function loop(code, interval=0.25) {
         }
         if (d.getElementById(id)) {
             if (id == "brython-sdk") {
-                load_script(document, 'script', 'brython-stdlib', code, "//github.com/R0bertus/AdventureLanThon/brython/brython_stdlib.js")
+                load_script(document, 'script', 'brython-stdlib', code, "//raw.githubusercontent.com/R0bertus/AdventureLanThon/master/brython/brython_stdlib.js")
             } else if (id == "brython-stdlib") {
                 load_script(document, 'script', null, code, null)
             }
@@ -31,7 +31,7 @@ function loop(code, interval=0.25) {
         js.id = id;
         js.onload = function () {
             if (id == "brython-sdk") {
-                load_script(document, 'script', 'brython-stdlib', code, "//github.com/R0bertus/AdventureLanThon/brython/brython_stdlib.js")
+                load_script(document, 'script', 'brython-stdlib', code, "//raw.githubusercontent.com/R0bertus/AdventureLanThon/master/brython/brython_stdlib.js")
             } else if (id == "brython-stdlib") {
                 load_script(document, 'script', null, code, null)
             }
@@ -39,5 +39,5 @@ function loop(code, interval=0.25) {
         js.src = src;
         fjs.parentNode.insertBefore(js, fjs);
     }
-    load_script(document, 'script', 'brython-sdk', code, "//github.com/R0bertus/AdventureLanThon/brython/brython.min.js")
+    load_script(document, 'script', 'brython-sdk', code, "//raw.githubusercontent.com/R0bertus/AdventureLanThon/master/brython/brython.min.js")
 }
