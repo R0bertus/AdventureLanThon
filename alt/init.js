@@ -9,11 +9,11 @@ function _loop(code, interval=0.25) {
                     if(request.status === 200 || request.status == 0) {
                         var ALT_core = request.responseText;
                         setInterval(function () {
-                            console.log(code)
-                            console.log(ALT_core)
-                            console.log(
-                                __BRYTHON__.python_to_js(ALT_core + code)
-                            )
+                            console.log(eval)
+                            console.log(parent.eval)
+                            //console.log(
+                            //    __BRYTHON__.python_to_js(ALT_core + code)
+                            //)
                         }, interval * 1000);
                     }
                 }
