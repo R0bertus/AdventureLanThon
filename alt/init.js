@@ -12,7 +12,6 @@ function _loop(code, interval=0.25) {
                         ALT_core = request.responseText;
                         _code = __BRYTHON__.python_to_js(ALT_core + _code);
                         setInterval(function () {
-                            console.log(_code)
                         }, interval * 1000);
                     }
                 }
