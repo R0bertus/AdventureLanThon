@@ -1,9 +1,5 @@
 import random
-
-try:
-    from browser import window
-except ImportError:
-    from alt.window import Window as window
+from browser import window
 
 
 def random_color():
