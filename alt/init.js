@@ -1,5 +1,4 @@
 var _code = null;
-var _ALT_core = null;
 function _loop(code, interval=0.25) {
     _code = code;
     var load_script = function (d, s, id, code, src) {
@@ -10,15 +9,9 @@ function _loop(code, interval=0.25) {
             request.onreadystatechange = function () {
                 if(request.readyState === 4) {
                     if(request.status === 200 || request.status == 0) {
-                        _ALT_core = request.responseText;
-                        _code = __BRYTHON__.python_to_js(_code);
+                        ALT_core = request.responseText;
+                        _code = __BRYTHON__.python_to_js(ALT_core + _code);
                         setInterval(function () {
-                            if(_ALT_core != null) {
-                                eval(
-                                    __BRYTHON__.python_to_js(_ALT_core)
-                                )
-                                _ALT_core = null
-                            }
                             eval(_code)
                         }, interval * 1000);
                     }
