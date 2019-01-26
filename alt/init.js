@@ -39,5 +39,5 @@ function _loop(code, interval=0.25) {
         js.src = src;
         fjs.parentNode.insertBefore(js, fjs);
     }
-    load_script(document, 'script', 'brython-sdk', code, "//cdn.jsdelivr.net/gh/R0bertus/AdventureLanThon@749ac07f2fa6b376cb85f056d3abb39869d729a8/brython/brython.min.js")
+    load_script(document, 'script', 'brython-sdk', code, "//cdn.jsdelivr.net/gh/R0bertus/AdventureLanThon@749ac07f2fa6b376cb85f056d3abb39869d729a8/brython/brython.js")
 }
