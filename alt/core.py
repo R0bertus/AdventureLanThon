@@ -8,3 +8,4 @@ def random_color():
 
 def set_message(message, color="yellow"):
     window.set_message(message, color)
+
