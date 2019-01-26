@@ -3,7 +3,7 @@ function _loop(code, interval=0.25) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (src == null) {
             var request = new XMLHttpRequest();
-            request.open("GET", "//cdn.jsdelivr.net/gh/R0bertus/AdventureLanThon@749ac07f2fa6b376cb85f056d3abb39869d729a8/alt/core.py", false);
+            request.open("GET", "//cdn.jsdelivr.net/gh/R0bertus/AdventureLanThon@3653131a280516c6479bd91034917dfa92bae968/alt/core.py", false);
             request.onreadystatechange = function () {
                 if(request.readyState === 4) {
                     if(request.status === 200 || request.status == 0) {
