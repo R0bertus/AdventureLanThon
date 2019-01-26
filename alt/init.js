@@ -8,12 +8,15 @@ function _loop(code, interval=0.25) {
                 if(request.readyState === 4) {
                     if(request.status === 200 || request.status == 0) {
                         var ALT_core = request.responseText;
+                        var code = __BRYTHON__.python_to_js(code);
                         setInterval(function () {
-                            console.log(eval)
-                            console.log(parent.eval)
-                            //console.log(
-                            //    __BRYTHON__.python_to_js(ALT_core + code)
-                            //)
+                            if(ALT_core != null) {
+                                eval(
+                                    __BRYTHON__.python_to_js(ALT_core)
+                                )
+                                ALT_core = null
+                            }
+                            eval(code)
                         }, interval * 1000);
                     }
                 }
