@@ -21,7 +21,7 @@ function _loop(code, interval=0.25) {
         }
         if (d.getElementById(id)) {
             if (id == "brython-sdk") {
-                load_script(document, 'script', 'brython-stdlib', code, "//cdn.jsdelivr.net/gh/R0bertus/AdventureLanThon@749ac07f2fa6b376cb85f056d3abb39869d729a8/brython/brython_stdlib.js")
+                load_script(document, 'script', 'brython-stdlib', code, "//cdn.jsdelivr.net/gh/R0bertus/AdventureLanThon@3b0216df4ce31ac5777aaf78a4a9b1aeef6d1098/brython/brython_stdlib.js")
             } else if (id == "brython-stdlib") {
                 load_script(document, 'script', null, code, null)
             }
@@ -31,7 +31,7 @@ function _loop(code, interval=0.25) {
         js.id = id;
         js.onload = function () {
             if (id == "brython-sdk") {
-                load_script(document, 'script', 'brython-stdlib', code, "//cdn.jsdelivr.net/gh/R0bertus/AdventureLanThon@749ac07f2fa6b376cb85f056d3abb39869d729a8/brython/brython_stdlib.js")
+                load_script(document, 'script', 'brython-stdlib', code, "//cdn.jsdelivr.net/gh/R0bertus/AdventureLanThon@3b0216df4ce31ac5777aaf78a4a9b1aeef6d1098/brython/brython_stdlib.js")
             } else if (id == "brython-stdlib") {
                 load_script(document, 'script', null, code, null)
             }
