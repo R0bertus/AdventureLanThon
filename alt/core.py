@@ -88,16 +88,20 @@ class AdventureLanThon(object):
     def heal(self, target):
         window.heal(target)
 
-    def farm_nearest_monster(self, maximum_attack=25, minimum_experience=10):
+    def in_attack_range(self, target):
+        return window.in_attack_range(target)
+
+    def farm_nearest_monster(self, maximum_attack=25, minimum_experience=10, treshold_hp=0.5, treshold_mp=0.4):
         if self.get_target() is None:
             monster = self.get_nearest_monster(maximum_attack, minimum_experience)
             self.smart_move(self.get_position(monster))
             self.attack(monster)
         else:
-            if self.drink_health():
+            if self.drink_health(treshold_hp):
                 return True
-            elif self.drink_mana():
+            elif self.drink_mana(treshold_mp):
                 return True
             else:
-                self.smart_move(self.get_position(self.get_target()))
+                if not self.in_attack_range(self.get_target()):
+                    self.smart_move(self.get_position(self.get_target()))
                 self.attack(self.get_target())
