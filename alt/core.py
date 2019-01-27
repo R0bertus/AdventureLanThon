@@ -9,7 +9,7 @@ class AdventureLanThon(object):
     POTIONS = "potions"
     MONSTER = "monster"
     CHARACTER = "character"
-    monsters = window.monsters
+    monsters = window.G.monsters
     character = window.character
 
     def __init__(self):
