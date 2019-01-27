@@ -10,5 +10,5 @@ loop(`
 # Python code starts here
 # this will be a 1-1 relationship of the runner_functions
 set_message("Hello World", random_color())
-`)
+`, interval=0.1)
 ```
