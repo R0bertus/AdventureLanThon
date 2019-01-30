@@ -26,6 +26,6 @@ def simple_warrior_farming(maximum_attack=25, minimum_experience=10, treshold_hp
                 smart_move(get_position(get_target()))
             attack(get_target())
 
-set_interval(function(simple_warrior_farming, minimum_experience=20, maximum_attack=50), 0.25)
+set_interval(function(simple_warrior_farming, minimum_experience=20, maximum_attack=50), 250)
 `)
 ```
