@@ -25,6 +25,7 @@ def simple_warrior_farming(maximum_attack=25, minimum_experience=10, treshold_hp
             if not in_attack_range(get_target()):
                 smart_move(get_position(get_target()))
             attack(get_target())
+    loot()
 
 set_interval(function(simple_warrior_farming, minimum_experience=20, maximum_attack=50), 250)
 `)
