@@ -1,4 +1,6 @@
+from browser import timer
 from browser import window
+from functools import partial
 
 
 class AdventureLanThon(object):
@@ -91,7 +93,7 @@ class AdventureLanThon(object):
     def in_attack_range(self, target):
         return window.in_attack_range(target)
 
-    def farm_nearest_monster(self, maximum_attack=25, minimum_experience=10, treshold_hp=0.5, treshold_mp=0.4):
+    def farm_nearest_monster_warrior_simple(self, maximum_attack=25, minimum_experience=10, treshold_hp=0.5, treshold_mp=0.4):
         if self.get_target() is None:
             monster = self.get_nearest_monster(maximum_attack, minimum_experience)
             self.smart_move(self.get_position(monster))
@@ -105,3 +107,39 @@ class AdventureLanThon(object):
                 if not self.in_attack_range(self.get_target()):
                     self.smart_move(self.get_position(self.get_target()))
                 self.attack(self.get_target())
+
+
+alt = AdventureLanThon()
+farm_nearest_monster_warrior_simple = alt.farm_nearest_monster_warrior_simple
+get_position = alt.get_position
+set_message = alt.set_message
+game_log = alt.game_log
+smart_move = alt.smart_move
+buy_potions = alt.buy_potions
+get_nearest_monster = alt.get_nearest_monster
+use_hp_or_mp = alt.use_hp_or_mp
+drink_health = alt.drink_health
+drink_mana = alt.drink_mana
+get_target = alt.get_target
+in_attack_range = alt.in_attack_range
+attack = alt.attack
+loot = alt.loot
+heal = alt.heal
+use = alt.use
+set_interval = timer.set_interval
+function = partial
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
