@@ -83,7 +83,7 @@ class GoldMeter(object):
                 self.sum_gold += gold
 
 
-def enable_gold():
+def enable_goldmeter():
     try:
         gold_meter = GoldMeter()
         gold_meter.register_goldmeter_handler("game_log", gold_meter.gold_meter_game_log_handler)
