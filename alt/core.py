@@ -130,20 +130,13 @@ loot = alt.loot
 heal = alt.heal
 use = alt.use
 
+try:
+    gold_meter
+except:
+    gold_meter = GoldMeter()
 
 class GoldMeter(object):
     def __init__(self):
-        try:
-            window.parent.prev_handlers_goldmeter
-        except:
-            window.parent.prev_handlers_goldmeter = []
-
-        if window.parent.prev_handlers_goldmeter:
-            for event, handler in window.parent.prev_handlers_goldmeter:
-                window.parent.socket.removeListener(event, handler)
-        self.sum_gold = 0
-        self.start_time = now()
-
         self.bottom_right_corner = _("#bottomrightcorner")
         self.bottom_right_corner.find("#goldtimer").remove()
 
@@ -163,6 +156,20 @@ class GoldMeter(object):
         }).html("").appendTo(self.xpt_container)
 
         self.bottom_right_corner.children().first().after(self.xpt_container)
+
+        self.init_goldmeter()
+
+    def init_goldmeter(self):
+        self.sum_gold = 0
+        self.start_time = now()
+        try:
+            window.parent.prev_handlers_goldmeter
+        except:
+            window.parent.prev_handlers_goldmeter = []
+
+        if window.parent.prev_handlers_goldmeter:
+            for event, handler in window.parent.prev_handlers_goldmeter:
+                window.parent.socket.removeListener(event, handler)
 
     def update_gold_timer_list(self):
         gold = self.get_gold_per_second()
@@ -204,7 +211,6 @@ class GoldMeter(object):
 
 
 def enable_goldmeter():
-    gold_meter = GoldMeter()
     gold_meter.register_goldmeter_handler("game_log", gold_meter.gold_meter_game_log_handler)
     gold_meter.register_goldmeter_handler("game_response", gold_meter.gold_meter_game_response_handler)
     set_interval(function(gold_meter.update_goldmeter), 100)
