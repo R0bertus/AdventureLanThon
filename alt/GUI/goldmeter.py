@@ -8,17 +8,6 @@ now = window.Date.now
 
 class GoldMeter(object):
     def __init__(self):
-        try:
-            window.parent.prev_handlers_goldmeter
-        except:
-            window.parent.prev_handlers_goldmeter = []
-
-        if window.parent.prev_handlers_goldmeter:
-            for event, handler in window.parent.prev_handlers_goldmeter:
-                window.parent.socket.removeListener(event, handler)
-        self.sum_gold = 0
-        self.start_time = now()
-
         self.bottom_right_corner = _("#bottomrightcorner")
         self.bottom_right_corner.find("#goldtimer").remove()
 
@@ -39,6 +28,22 @@ class GoldMeter(object):
 
         self.bottom_right_corner.children().first().after(self.xpt_container)
 
+        self.init_goldmeter()
+
+    def init_goldmeter(self):
+        self.sum_gold = 0
+        self.start_time = now()
+        try:
+            window.parent.prev_handlers_goldmeter
+        except:
+            window.parent.prev_handlers_goldmeter = []
+
+        if window.parent.prev_handlers_goldmeter:
+            for event, handler in window.parent.prev_handlers_goldmeter:
+                window.parent.socket.removeListener(event, handler)
+
+        window.parent.prev_handlers_goldmeter = []
+
     def update_gold_timer_list(self):
         gold = self.get_gold_per_second()
         gold_string = "<div>" + str(gold) + " Gold/Hr" + "</div>"
@@ -52,7 +57,7 @@ class GoldMeter(object):
             "fontSize": '30px',
             "color": '#FFD700',
             "textAlign": 'center',
-          })
+        })
 
     def update_goldmeter(self):
         self.update_gold_timer_list()
@@ -77,8 +82,12 @@ class GoldMeter(object):
                 gold = int(event["message"].replace(" gold", ""))
                 self.sum_gold += gold
 
-def enable_goldmeter():
-    gold_meter = GoldMeter()
-    gold_meter.register_goldmeter_handler("game_log", gold_meter.gold_meter_game_log_handler)
-    gold_meter.register_goldmeter_handler("game_response", gold_meter.gold_meter_game_response_handler)
-    set_interval(function(gold_meter.update_goldmeter), 100)
+
+def enable_gold():
+    try:
+        gold_meter = GoldMeter()
+        gold_meter.register_goldmeter_handler("game_log", gold_meter.gold_meter_game_log_handler)
+        gold_meter.register_goldmeter_handler("game_response", gold_meter.gold_meter_game_response_handler)
+        set_interval(function(gold_meter.update_goldmeter), 100)
+    except:
+        pass
